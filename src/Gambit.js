@@ -5,7 +5,7 @@ const { Client } = require('discord.js');
 // A dice rolling bot called Gambit
 
 // Import the discord.js module
-const(Client, Intents) = require('discord.js');
+const{Client, Intents} = require('discord.js');
 
 // Create an instance of a Discord client
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
