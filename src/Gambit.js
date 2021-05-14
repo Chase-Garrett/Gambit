@@ -30,18 +30,22 @@ client.on('message', message => {
         // Print list of commands
         message.channel.send('```\n-roll xdy replace x with number of dice to roll and y with sides on the dice' +
         '\n```');
-    } else {
+    }else if(message.content.startsWith(`${prefix}roll`)) {
         let input = message.content;
-        let commandArray = input.split('d');
+        let args = input.slice(prefix.length).trim().split(/ +/);
+        let command = args[1].split('d');
+        let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
+        //console.log(args);
+        //console.log(command);
 
-        switch(commandArray[1]){
+        switch(parseInt(command[1])){
             case 4:
             case 6:
             case 8:
             case 10:
             case 12:
             case 20:
-                message.channel.send(new DiceRoll(commandArray[0], commandArray[1]))
+                message.channel.send(dice.roll())
                 break;
         }
     }
