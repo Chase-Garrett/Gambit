@@ -9,6 +9,7 @@ class DiceRoll{
         this.diceSides = diceSides;
     }
 
+    // function to roll dice and return value
     roll(){
         return (this.numDice * Math.floor(Math.random() * (this.diceSides) + 1));
     }
