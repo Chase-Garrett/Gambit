@@ -1,9 +1,6 @@
 'use strict';
 
-const { Client } = require('discord.js');
-
 // A dice rolling bot called Gambit
-
 // Import the discord.js module
 const{Client, Intents} = require('discord.js');
 
