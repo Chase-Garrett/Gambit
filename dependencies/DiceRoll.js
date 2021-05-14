@@ -11,7 +11,12 @@ class DiceRoll{
 
     // function to roll dice and return value
     roll(){
-        return (this.numDice * Math.floor(Math.random() * (this.diceSides) + 1));
+        let sum = 0;
+        for(let i = 0; i < this.numDice; i++){
+            let tempSum = Math.floor(Math.random() * (this.diceSides) + 1);
+            sum = sum + tempSum;
+        }
+        return sum;
     }
 }
 

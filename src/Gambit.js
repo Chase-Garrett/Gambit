@@ -11,7 +11,7 @@ const{DiceRoll} = require('../dependencies/DiceRoll.js');
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
 
 // Create an instance of the DiceRoll module
-const diceRoll = new DiceRoll(2, 6);
+const diceRoll = new DiceRoll(3, 12);
 
 // Ready event is vital, it means that only _after_ this will your bot start reacting to information
 // recieved from Discord
