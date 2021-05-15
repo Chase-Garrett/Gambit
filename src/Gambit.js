@@ -53,21 +53,6 @@ client.on('message', message => {
         } else{
             message.channel.send('You are trying to roll to many dice!');
         }
-        // let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
-        // //console.log(args);
-        // //console.log(command);
-
-        // // switch statement to determine allowable dice
-        // switch(parseInt(command[1])){
-        //     case 4:
-        //     case 6:
-        //     case 8:
-        //     case 10:
-        //     case 12:
-        //     case 20:
-        //         message.channel.send(dice.roll())
-        //         break;
-        // }
     }
 });
 
