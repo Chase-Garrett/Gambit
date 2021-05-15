@@ -34,21 +34,40 @@ client.on('message', message => {
         let input = message.content;
         let args = input.slice(prefix.length).trim().split(/ +/);
         let command = args[1].split('d');
-        let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
-        //console.log(args);
-        //console.log(command);
+        if(parseInt(command[0]) <= 100){
+            let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
+            //console.log(args);
+            //console.log(command);
 
-        // switch statement to determine allowable dice
-        switch(parseInt(command[1])){
-            case 4:
-            case 6:
-            case 8:
-            case 10:
-            case 12:
-            case 20:
-                message.channel.send(dice.roll())
-                break;
+            // switch statement to determine allowable dice
+            switch(parseInt(command[1])){
+                case 4:
+                case 6:
+                case 8:
+                case 10:
+                case 12:
+                case 20:
+                    message.channel.send(dice.roll())
+                    break;
+            }
+        } else{
+            message.channel.send('You are trying to roll to many dice!');
         }
+        // let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
+        // //console.log(args);
+        // //console.log(command);
+
+        // // switch statement to determine allowable dice
+        // switch(parseInt(command[1])){
+        //     case 4:
+        //     case 6:
+        //     case 8:
+        //     case 10:
+        //     case 12:
+        //     case 20:
+        //         message.channel.send(dice.roll())
+        //         break;
+        // }
     }
 });
 
