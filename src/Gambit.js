@@ -3,13 +3,13 @@
 // A dice rolling bot called Gambit
 
 // Import config.json
-const {prefix, token} = require('../dependencies/config.json');
+const {prefix, token} = require('./config.json');
 
 // Import the discord.js module
 const{Client, Intents} = require('discord.js');
 
 // Import the DiceRoll module
-const{DiceRoll} = require('../dependencies/DiceRoll.js');
+const{DiceRoll} = require('./DiceRoll.js');
 
 // Create an instance of a Discord client
 const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]});
@@ -30,7 +30,7 @@ client.on('message', message => {
         // Print list of commands
         message.channel.send('```\n-roll xdy replace x with number of dice to roll and y with sides on the dice' +
         '\n```');
-    }else if(message.content.startsWith(`${prefix}roll`)) {
+    }else if(message.content.startsWith(`${prefix}roll`)) { // takes -roll command and returns a value based on the dice rolled
         let input = message.content;
         let args = input.slice(prefix.length).trim().split(/ +/);
         let command = args[1].split('d');
@@ -38,6 +38,7 @@ client.on('message', message => {
         //console.log(args);
         //console.log(command);
 
+        // switch statement to determine allowable dice
         switch(parseInt(command[1])){
             case 4:
             case 6:
