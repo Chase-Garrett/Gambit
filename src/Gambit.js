@@ -32,12 +32,31 @@ client.on('message', message => {
         '\n```');
     }else if(message.content.startsWith(`${prefix}roll`)) { // takes -roll command and returns a value based on the dice rolled
         let input = message.content;
-        let args = input.slice(prefix.length).trim().split(/ +/);
-        let command = args[1].split('d');
+        let args = input;
+        let command;
+        try{
+            args = input.slice(prefix.length).trim().split(/ +/);
+            console.log('args try ' + args)
+            command = args[1].split('d');
+            console.log('command try ' + command)
+        }
+        catch(err){
+            args = input.slice(prefix.length).slice('roll').trim();
+            console.log('args catch ' + args)
+            command = args[1].split('d');
+            console.log('command catch ' + command)
+        }
+        //let command = args[1].split('d');
+        console.log('before if statement');
+        console.log(args);
+        console.log(command);
+
+        //If statement that locks in the number of rolls for a given command
         if(parseInt(command[0]) <= 100){
             let dice = new DiceRoll(parseInt(command[0]), parseInt(command[1]));
-            //console.log(args);
-            //console.log(command);
+            console.log('in if statement');
+            console.log(args);
+            console.log(command);
 
             // switch statement to determine allowable dice
             switch(parseInt(command[1])){
