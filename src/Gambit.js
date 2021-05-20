@@ -106,7 +106,7 @@ client.on('message', message => {
                 doRoll(command.slice(0), message);
                 break;
             default:
-                message.channel.send(`ERROR: command ${command[0]} no supported.`);
+                message.channel.send(`ERROR: command ${command[0]} not supported.`);
         }
     }
 });
