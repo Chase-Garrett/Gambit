@@ -20,12 +20,12 @@ const client = new Client({intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_M
 // Ready event is vital, it means that only _after_ this will your bot start reacting to information
 // recieved from Discord
 client.on('ready', () => {
-    console.log('I am ready!');
+    console.log('Gambit is connected and ready.');
 });
 
 function doHelp(message){
     message.channel.send('```\n-roll xdy replace x with number of dice to roll and y with sides on the dice' +
-    '-coin and -cointoss both prompt Gambit to flip a coin and return either "Heads!" or "Tails!"' +
+    '\n-coin and -cointoss both prompt Gambit to flip a coin and return either "Heads!" or "Tails!"' +
     '\n```');
 }
 
@@ -45,7 +45,7 @@ function doRoll(args, message){
     try {
         command = args[1].split("d");
     } catch (err) {
-        console.error("ERROR: invalid arguments");
+        message.channel.send("ERROR: invalid arguments");
         return;
     }
 
@@ -59,7 +59,7 @@ function doRoll(args, message){
         numDice = 1;
         numSides = command[1];
     } else {
-        console.error("ERROR: invalid arguments");
+        message.channel.send("ERROR: invalid arguments");
         return;
     }
 
@@ -78,7 +78,7 @@ function doRoll(args, message){
                 message.channel.send(dice.roll())
                 break;
             default:
-                console.error("ERROR: invalid dice type");
+                message.channel.send("ERROR: invalid dice type");
                 return;
         }
     } else{
@@ -90,7 +90,6 @@ function doRoll(args, message){
 client.on('message', message => {
     if(message.content[0] == prefix){
         let command = message.content.slice(1).trim().split(/ +/);
-        console.log(command);
 
         // Switch statement to check input against available commands
         // prevents unnecessary conditional checking in cmd functions
@@ -107,7 +106,7 @@ client.on('message', message => {
                 doRoll(command.slice(0), message);
                 break;
             default:
-                console.error(`ERROR: command ${command[0]} no supported.`);
+                message.channel.send(`ERROR: command ${command[0]} no supported.`);
         }
     }
 });
