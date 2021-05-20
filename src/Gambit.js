@@ -28,6 +28,16 @@ function doHelp(message){
     '\n```');
 }
 
+function doCoinToss(message){
+    let dice = new DiceRoll(1, 2);
+
+    if(dice.roll() == 2){
+        message.channel.send("Heads!");
+    } else{
+        message.channel.send("Tails!");
+    }
+}
+
 function doRoll(args, message){
     let command;
 
