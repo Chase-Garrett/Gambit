@@ -25,6 +25,7 @@ client.on('ready', () => {
 
 function doHelp(message){
     message.channel.send('```\n-roll xdy replace x with number of dice to roll and y with sides on the dice' +
+    '-coin and -cointoss both prompt Gambit to flip a coin and return either "Heads!" or "Tails!"' +
     '\n```');
 }
 
