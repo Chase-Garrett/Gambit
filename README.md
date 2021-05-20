@@ -7,7 +7,7 @@ Gambit is a discord bot for rolling multi-sided dice.
 ---
 
 
-Currently Gambit knows only two commands a help command and a roll command.
+Gambit knows three commands, help, roll, and cointoss.
 - -help
 - -h
 
