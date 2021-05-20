@@ -29,13 +29,18 @@ function doHelp(message){
     '\n```');
 }
 
-function doCoinToss(message){
-    let dice = new DiceRoll(1, 2);
+function doCoinToss(command, message){
+    console.log(command);
+    if((command[0] == "coin" || command[0] == "cointoss") && command[1] == null){
+        let dice = new DiceRoll(1, 2);
 
-    if(dice.roll() == 2){
-        message.channel.send("Heads!");
+        if(dice.roll() == 2){
+            message.channel.send("Heads!");
+        } else{
+            message.channel.send("Tails!");
+        }
     } else{
-        message.channel.send("Tails!");
+        message.channel.send("ERROR: invalid arguments");
     }
 }
 
@@ -100,7 +105,7 @@ client.on('message', message => {
                 break;
             case "coin":
             case "cointoss":
-                doCoinToss(message);
+                doCoinToss(command.slice(0), message);
                 break;
             case "roll":
                 doRoll(command.slice(0), message);
